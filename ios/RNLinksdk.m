@@ -224,6 +224,14 @@ RCT_EXPORT_METHOD(open:(RCTResponseSenderBlock)callback) {
     }
 }
 
+RCT_EXPORT_METHOD(dismiss:(RCTResponseSenderBlock)callback) {
+        if (self.linkViewController) {
+            dismissLinkViewController()
+        }else{
+            callback(@[RCTMakeError(@"create was not called", nil, nil)]);
+        }
+}
+
 - (void)dismissLinkViewController {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     self.presentingViewController = nil;

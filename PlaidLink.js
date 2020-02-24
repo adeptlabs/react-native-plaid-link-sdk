@@ -2,6 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { NativeModules, Platform, TouchableOpacity } from 'react-native';
 
+export const dismissLink = async () => {
+  NativeModules.RNLinksdk.dismiss((error, metadata) => {
+    if (error) {
+      onExit('error dismiss');
+    } else {
+      onExit('CLOSED');
+    }
+  });
+};
+
 export const openLink = async ({ onExit, onSuccess, ...serializable }) => {
   if (Platform.OS === 'android') {
     const constants = NativeModules.PlaidAndroid.getConstants();
