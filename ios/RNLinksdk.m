@@ -226,7 +226,7 @@ RCT_EXPORT_METHOD(open:(RCTResponseSenderBlock)callback) {
 
 RCT_EXPORT_METHOD(dismiss:(RCTResponseSenderBlock)callback) {
         if (self.linkViewController) {
-            dismissLinkViewController()
+            [self dismissLinkViewController];
         }else{
             callback(@[RCTMakeError(@"create was not called", nil, nil)]);
         }
